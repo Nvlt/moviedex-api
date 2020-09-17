@@ -1085,7 +1085,7 @@ module.exports = {
           }
           else
           {
-            //Filter all of the query cases that are present, making string queries case insinsitive while leaving numbers alone.
+            //Filter all of the query cases that are present, making string queries case insensitive while leaving numbers alone.
             selectedMovies = selectedMovies.filter(movie => 
               (typeof movie[query] === "string" ? movie[query].toLowerCase() : movie[query]) === (typeof value === "string" ? value.toLowerCase() : value));
           }
