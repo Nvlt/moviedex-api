@@ -15,7 +15,7 @@ app.use(helmet())
 app.use(cors())
 app.use(function authenticate(request, response, next)
 {
-    console.log(config.AUTH_KEY);
+    
     if(request.get('Authorization') === config.AUTH_KEY)
     {
         next();        
