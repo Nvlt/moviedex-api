@@ -1058,6 +1058,7 @@ module.exports = {
       }
     ],
   getMovies:function(request, response){
+      //I made all of the keys searchable.
       const validQueries = [
         "filmtv_ID",
         "film_title",
@@ -1072,16 +1073,19 @@ module.exports = {
       ]
       const queries = Object.entries(request.query);
       let selectedMovies = [...this.movies];
+      //Loop through all of the queries in the query array.
       for(const [query,value] of queries)
       {
         if(validQueries.includes(query))
         {
+          //Display average votes that are equal or greater than the query value.
           if(query === 'avg_vote')
           {
             selectedMovies = selectedMovies.filter(movie => movie.avg_vote >= value)
           }
           else
           {
+            //Filter all of the query cases that are present, making string queries case insinsitive while leaving numbers alone.
             selectedMovies = selectedMovies.filter(movie => 
               (typeof movie[query] === "string" ? movie[query].toLowerCase() : movie[query]) === (typeof value === "string" ? value.toLowerCase() : value));
           }
