@@ -16,7 +16,7 @@ app.use(cors())
 app.use(function authenticate(request, response, next)
 {
     
-    if(request.get('Authorization') === config.AUTH_KEY)
+    if(request.get('Authorization').split(' ')[1] === config.AUTH_KEY)
     {
         next();        
     }
